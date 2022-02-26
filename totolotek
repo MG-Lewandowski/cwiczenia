@@ -1,0 +1,66 @@
+"""Modół 0 - totolotek"""
+import random
+
+LICZNIK = 0
+liczby = []
+INWESTYCJA = 0
+TYGODNIE = 0
+LATA = 0
+
+L3 = 0 # Licznik trójek itp
+L4 = 0
+L5 = 0
+
+wylosowane_liczby = []
+moje_liczby = [5, 6, 7, 30, 38, 41]
+
+
+def losowanie():
+    """_summary_
+
+        Returns:
+        _type_: _description_
+    """
+
+    return sorted(list(random.sample(range(1, 50), k=6)))
+
+
+print(losowanie())
+print(moje_liczby)
+
+
+while wylosowane_liczby != moje_liczby:
+    wylosowane_liczby = losowanie()
+
+    if moje_liczby == wylosowane_liczby:
+        INWESTYCJA = LICZNIK * 3
+        TYGODNIE = int(LICZNIK / 3)
+        LATA = int(TYGODNIE / 52)
+        break
+
+    X = 0
+    for i in wylosowane_liczby:
+        if i in moje_liczby:
+            X = X + 1
+
+
+    if X == 3:
+        L3 = L3 + 1
+    elif X == 4:
+        L4 = L4 + 1
+    elif X == 5:
+        L5 = L5 + 1
+
+
+    LICZNIK = LICZNIK + 1
+
+print()
+print()
+print(f'Wylosowano za {LICZNIK:,} razem')
+print(f'Trójek: {L3:,}')
+print(f'Czwórek: {L4:,}')
+print(f'Piątek: {L5:,}')
+print(f'Tygodnie: {TYGODNIE:,}')
+print(f'Lata inwestycji: {LATA:,} ')
+print(f'Koszt: {INWESTYCJA:,} PLN')
+print(f'Moje liczby: {moje_liczby}')
